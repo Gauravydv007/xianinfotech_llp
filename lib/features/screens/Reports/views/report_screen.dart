@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_batch_report_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_details_report.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_report_by_party_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_wise_profit_loss_page.dart';
@@ -219,12 +220,20 @@ class ReportScreen extends StatelessWidget {
              Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StockSummaryByItemCategoryPage(),
+                builder: (context) => HomePage(autoShowBottomSheet: true,),
               ),
             );
           }),
           buildSubItemWithIcon(
-              'Item Batch Report', context, Icons.info_outline, () {}),
+              'Item Batch Report', context, Icons.info_outline, () {
+            //      Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => ItemBatchReportPage(),
+            //   ),
+            // );
+
+              }),
           buildSubItemWithIcon(
               'Item Serial Report', context, Icons.info_outline, () {}),
           buildSubItem('Item Wise Discount', context, () {}),
