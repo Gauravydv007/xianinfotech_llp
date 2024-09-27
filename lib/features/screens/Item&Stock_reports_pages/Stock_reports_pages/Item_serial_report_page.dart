@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Reports/views/report_screen.dart';
 import 'package:xianinfotech_llp_gaurav/utils/widgets/PlanComparisonRow_widget.dart';
+import 'package:xianinfotech_llp_gaurav/utils/widgets/Plan_option_widget.dart';
 
-class HomePage extends StatefulWidget {
+class ItemSerialReportPage extends StatefulWidget {
   final bool autoShowBottomSheet;
 
-  // Constructor to control auto-showing the bottom sheet.
-  HomePage({this.autoShowBottomSheet = false});
+  ItemSerialReportPage({this.autoShowBottomSheet = false});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _ItemSerialReportPageState createState() => _ItemSerialReportPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ItemSerialReportPageState extends State<ItemSerialReportPage> {
   @override
   void initState() {
     super.initState();
 
-    // Automatically show the bottom sheet if the flag is set to true.
     if (widget.autoShowBottomSheet) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         showSubscriptionSheet(context);
@@ -30,10 +28,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Subscription Plans"),
+        title: const Text("Flutter Subscription Plans"),
       ),
       body: Center(
-        // Don't show the button if the bottom sheet auto shows.
         child: widget.autoShowBottomSheet
             ? Container()
             : ElevatedButton(
@@ -70,8 +67,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class SubscriptionSheet extends StatefulWidget {
-  final VoidCallback
-      onClose; // This callback will be triggered when the bottom sheet is closed.
+  final VoidCallback onClose;
 
   SubscriptionSheet({required this.onClose});
 
@@ -196,7 +192,7 @@ class _SubscriptionSheetState extends State<SubscriptionSheet> {
                 gradientColors: [Colors.white, Colors.grey.shade300],
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -248,64 +244,6 @@ class _SubscriptionSheetState extends State<SubscriptionSheet> {
         child: Center(
           child: Text("Change Options", style: TextStyle(fontSize: 24)),
         ),
-      ),
-    );
-  }
-}
-
-class PlanOption extends StatelessWidget {
-  final String planName;
-  final String price;
-  final bool isSelected;
-  final List<Color> gradientColors;
-
-  PlanOption({
-    required this.planName,
-    required this.price,
-    required this.isSelected,
-    required this.gradientColors,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 150,
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradientColors,
-        ),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: isSelected ? Colors.blue : Colors.grey),
-      ),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Column(
-            children: [
-              Row(
-                children: [
-                  Icon(FontAwesomeIcons.crown, color: Colors.amber, size: 20),
-                  SizedBox(width: 10),
-                  Text(planName),
-                ],
-              ),
-              SizedBox(height: 5),
-              Text(
-                price,
-                style: TextStyle(
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
-            ],
-          ),
-          if (isSelected)
-            Positioned(
-              top: -20,
-              right: -23,
-              child: Icon(Icons.check_circle, color: Colors.blue, size: 20),
-            ),
-        ],
       ),
     );
   }

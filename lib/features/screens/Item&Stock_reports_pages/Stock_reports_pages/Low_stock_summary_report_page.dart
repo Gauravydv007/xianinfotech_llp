@@ -4,7 +4,8 @@ class LowStockSummaryReportPage extends StatefulWidget {
   const LowStockSummaryReportPage({super.key});
 
   @override
-  State<LowStockSummaryReportPage> createState() => _LowStockSummaryReportPageState();
+  State<LowStockSummaryReportPage> createState() =>
+      _LowStockSummaryReportPageState();
 }
 
 class _LowStockSummaryReportPageState extends State<LowStockSummaryReportPage> {
@@ -49,9 +50,9 @@ class _LowStockSummaryReportPageState extends State<LowStockSummaryReportPage> {
               ),
               child: Column(
                 children: [
-
                   Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, top: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

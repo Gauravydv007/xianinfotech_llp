@@ -5,10 +5,12 @@ class SalePurchaseByItemCategoryPage extends StatefulWidget {
   const SalePurchaseByItemCategoryPage({super.key});
 
   @override
-  State<SalePurchaseByItemCategoryPage> createState() => _SalePurchaseByItemCategoryPageState();
+  State<SalePurchaseByItemCategoryPage> createState() =>
+      _SalePurchaseByItemCategoryPageState();
 }
 
-class _SalePurchaseByItemCategoryPageState extends State<SalePurchaseByItemCategoryPage> {
+class _SalePurchaseByItemCategoryPageState
+    extends State<SalePurchaseByItemCategoryPage> {
   String selectedDateRange = "Custom";
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now();
@@ -100,8 +102,7 @@ class _SalePurchaseByItemCategoryPageState extends State<SalePurchaseByItemCateg
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: 
-                  Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(
@@ -226,8 +227,8 @@ class _SalePurchaseByItemCategoryPageState extends State<SalePurchaseByItemCateg
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                 child: Row(
                   children: [
                     Text(
@@ -260,8 +261,6 @@ class _SalePurchaseByItemCategoryPageState extends State<SalePurchaseByItemCateg
                   ],
                 ),
               ),
-
-
             ],
           ),
           if (isDropdownVisible)

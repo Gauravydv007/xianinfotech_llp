@@ -73,28 +73,32 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 12, 135, 206),
-        shadowColor: Colors.grey,
-        elevation: 1,
-        actions: [
-          Row(
-            children: [
-              const Text(
-              "Item Reported By Party",
-              style: TextStyle(
-                  fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
-                      ),
-
-                      SizedBox(width: 50,),
-
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Icon(Icons.more_vert, color: Colors.white,),
-                      )
-            ],
-          ),
-        ]
-      ),
+          backgroundColor: const Color.fromARGB(255, 12, 135, 206),
+          shadowColor: Colors.grey,
+          elevation: 1,
+          actions: [
+            Row(
+              children: [
+                const Text(
+                  "Item Reported By Party",
+                  style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.more_vert,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ]),
       body: Stack(
         children: [
           Column(
@@ -244,7 +248,7 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -341,12 +345,12 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
               child: Container(
                 height: 120,
                 width: 100,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
-                      offset: const Offset(0.0, 1),
+                      offset:  Offset(0.0, 1),
                       blurRadius: 6.0,
                     ),
                   ],

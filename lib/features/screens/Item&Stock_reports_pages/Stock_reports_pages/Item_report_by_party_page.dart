@@ -100,8 +100,7 @@ class _ItemReportByPartyPageState extends State<ItemReportByPartyPage> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: 
-                  Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       GestureDetector(

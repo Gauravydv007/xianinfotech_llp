@@ -1,37 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ItemDetailsReportPage extends StatefulWidget {
-  const ItemDetailsReportPage({super.key});
+class ItemWiseDiscountPage extends StatefulWidget {
+  const ItemWiseDiscountPage({super.key});
 
   @override
-  State<ItemDetailsReportPage> createState() => _ItemDetailsReportPageState();
+  State<ItemWiseDiscountPage> createState() => _ItemWiseDiscountPageState();
 }
 
-class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
+class _ItemWiseDiscountPageState extends State<ItemWiseDiscountPage> {
   String selectedDateRange = "Custom";
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now();
   bool isDropdownVisible = false;
   bool isTypeDropdownVisible = false;
-  bool lvalue = false;
+  bool isPartyDropdownVisible = false;
 
   final List<String> dateRangeOptions = [
     "Today",
     "This Week",
     "This Month",
     "This Quarter",
-    "This Year",
+    "This Financial Year",
     "Custom"
   ];
 
   final List<String> typeOptions = [
-    "Name",
-    "Sale qua...",
-    "Purchas..",
+    "All",
+    "Unauthorized",
   ];
 
-  String selectedType = "Name";
+  final List<String> partyOptions = [
+    "All Parties",
+    "Gaurav",
+  ];
+
+  String selectedType = "All";
+  String selectedParty = "All Parties";
 
   String formatDate(DateTime date) {
     return DateFormat('dd/MM/yyyy').format(date);
@@ -70,6 +75,13 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
     });
   }
 
+  void selectParty(String option) {
+    setState(() {
+      selectedParty = option;
+      isPartyDropdownVisible = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,18 +99,9 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
@@ -126,7 +129,7 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                       ),
                       const SizedBox(width: 5),
                       const SizedBox(
-                        height: 20,
+                        height: 25,
                         child: VerticalDivider(color: Colors.grey),
                       ),
                       GestureDetector(
@@ -157,10 +160,6 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                         onTap: () => selectDate(context, false),
                         child: Row(
                           children: [
-                            const Icon(
-                              Icons.calendar_month,
-                              color: Colors.blue,
-                            ),
                             const SizedBox(width: 5),
                             Text(
                               formatDate(endDate),
@@ -174,125 +173,152 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 3, left: 0, right: 0),
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: const Divider(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Row(
                   children: [
-                    Checkbox(
-                      value: lvalue,
-                      onChanged: (value) {
-                        setState(() {
-                          lvalue = value!;
-                        });
-                      },
+                    Text(
+                      "Item Name",
+                      style: TextStyle(fontSize: 13, color: Colors.blue),
+                    ),
+                    SizedBox(
+                      width: 20,
                     ),
                     Text(
-                      "Hide Inactive Dates",
+                      "All Items",
                       style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.grey.shade600,
+                        fontSize: 13,
                       ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    SizedBox(height: 20, child: VerticalDivider()),
+                    Text(
+                      "Item Category",
+                      style: TextStyle(fontSize: 13, color: Colors.blue),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isTypeDropdownVisible = !isTypeDropdownVisible;
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            selectedType,
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
+                          ),
+                          const SizedBox(width: 25),
+                          const Icon(Icons.arrow_drop_down),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 5, right: 15),
+                padding: const EdgeInsets.all(8.0),
+                child: Divider(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Row(
                   children: [
                     Text(
-                      " Item Name",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.blue,
-                      ),
+                      "Party Name",
+                      style: TextStyle(fontSize: 13, color: Colors.blue),
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      height: 50,
-                      width: 180,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Enter Name',
-                          hintStyle: TextStyle(color: Colors.grey),
+                    SizedBox(
+                      width: 200,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isPartyDropdownVisible = !isPartyDropdownVisible;
+                          });
+                        },
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            suffixIcon: const Icon(Icons.arrow_drop_down),
+                            hintText: selectedParty,
+                          ),
+                          readOnly: true,
                         ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 360,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Summary",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Divider(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Total",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      "\u{20B9}${0.0}",
+                      style: TextStyle(
+                        fontSize: 16,
                       ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Date",
+                      "Total",
                       style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.grey,
-                          decoration: TextDecoration.underline),
+                        fontSize: 16,
+                      ),
                     ),
-                    SizedBox(
-                      width: 45,
+                    Text(
+                      "\u{20B9}${0.0}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.green,
+                      ),
                     ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Sales qty',
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.grey),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Purchase ",
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.grey),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'Adjust qty',
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.grey),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'Closing qty',
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: Colors.grey),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'qty',
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.grey,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.grey),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               ),
@@ -303,7 +329,7 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
               top: 35,
               left: 10,
               child: Container(
-                height: 170,
+                height: 185,
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -318,7 +344,7 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                 child: Column(
                   children: dateRangeOptions.map((String option) {
                     return SizedBox(
-                      height: 26,
+                      height: 30,
                       child: ListTile(
                         dense: true,
                         contentPadding: const EdgeInsets.symmetric(
@@ -340,10 +366,10 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
             ),
           if (isTypeDropdownVisible)
             Positioned(
-              top: 100,
-              left: 200,
+              top: 80,
+              left: 250,
               child: Container(
-                height: 120,
+                height: 90,
                 width: 100,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -365,10 +391,48 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                             vertical: 0, horizontal: 5),
                         title: Text(
                           option,
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 13),
                         ),
                         onTap: () {
                           selectType(option);
+                        },
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+          if (isPartyDropdownVisible)
+            Positioned(
+              top: 220, // Adjust the position accordingly
+              left: 10, // Adjust the position accordingly
+              child: Container(
+                height: 90,
+                width: 200, // Adjust width as needed
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: const Offset(0.0, 1),
+                      blurRadius: 6.0,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: partyOptions.map((String option) {
+                    return SizedBox(
+                      height: 30,
+                      child: ListTile(
+                        dense: true,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 10),
+                        title: Text(
+                          option,
+                          style: const TextStyle(fontSize: 13),
+                        ),
+                        onTap: () {
+                          selectParty(option);
                         },
                       ),
                     );

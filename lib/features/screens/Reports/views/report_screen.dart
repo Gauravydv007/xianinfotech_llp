@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_batch_report_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_details_report.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_report_by_party_page.dart';
+import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_serial_report_page.dart';
+import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_wise_discount_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Item_wise_profit_loss_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Low_stock_summary_report_page.dart';
 import 'package:xianinfotech_llp_gaurav/features/screens/Item&Stock_reports_pages/Stock_reports_pages/Sale_purchase_by_item_category_page.dart';
@@ -220,23 +222,40 @@ class ReportScreen extends StatelessWidget {
              Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HomePage(autoShowBottomSheet: true,),
+
+                builder: (context)=> StockSummaryByItemCategoryPage()
               ),
             );
           }),
           buildSubItemWithIcon(
               'Item Batch Report', context, Icons.info_outline, () {
-            //      Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => ItemBatchReportPage(),
-            //   ),
-            // );
+                 Navigator.push(
+              context,
+              MaterialPageRoute(
+                               builder: (context) => HomePage(autoShowBottomSheet: true,),
+
+              ),
+            );
 
               }),
           buildSubItemWithIcon(
-              'Item Serial Report', context, Icons.info_outline, () {}),
-          buildSubItem('Item Wise Discount', context, () {}),
+              'Item Serial Report', context, Icons.info_outline, () {
+                Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ItemSerialReportPage(autoShowBottomSheet: true,),
+              ),
+            );
+              }),
+          buildSubItem('Item Wise Discount', context, () {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+
+                builder: (context)=> ItemWiseDiscountPage()
+              ),
+            );
+          }),
           const SizedBox(height: 30),
 
           //Fifth  Category -  Business status
@@ -440,13 +459,11 @@ class ReportScreen extends StatelessWidget {
     );
   }
 
-  Widget buildSubItemWithIcon(
+ Widget buildSubItemWithIcon(
       String title, BuildContext context, IconData icon, VoidCallback onTap,
       {Color color = Colors.grey}) {
     return GestureDetector(
-      onTap: () {
-        onTap;
-      },
+      onTap: onTap, // Corrected here to actually call the onTap function
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Row(
@@ -461,5 +478,4 @@ class ReportScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  }}
