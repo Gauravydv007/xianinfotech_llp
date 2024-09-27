@@ -86,7 +86,7 @@ class _StockSummaryReportPageState extends State<StockSummaryReportPage> {
                           'Filters Applied:',
                           style: TextStyle(
                             fontSize: 15,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                         Container(
@@ -128,7 +128,7 @@ class _StockSummaryReportPageState extends State<StockSummaryReportPage> {
                           height: 25,
                           width: 130,
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
@@ -146,7 +146,7 @@ class _StockSummaryReportPageState extends State<StockSummaryReportPage> {
                           height: 25,
                           width: 80,
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
@@ -164,7 +164,7 @@ class _StockSummaryReportPageState extends State<StockSummaryReportPage> {
                           height: 25,
                           width: 80,
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
@@ -185,7 +185,7 @@ class _StockSummaryReportPageState extends State<StockSummaryReportPage> {
               ),
             ),
             const SizedBox(height: 1),
-            Image.asset('assets/images/no data Image.jpeg'),
+            Image.asset('assets/images/NO Data Image.jpeg'),
           ],
         ),
       ),

@@ -80,7 +80,7 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
             Row(
               children: [
                 const Text(
-                  "Item Reported By Party",
+                  "Item Wise Profit & Loss",
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.w500,
@@ -98,7 +98,8 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                 )
               ],
             ),
-          ]),
+          ],
+          ),
       body: Stack(
         children: [
           Column(
@@ -176,11 +177,6 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                         onTap: () => selectDate(context, false),
                         child: Row(
                           children: [
-                            const Icon(
-                              Icons.calendar_month,
-                              color: Colors.blue,
-                            ),
-                            const SizedBox(width: 5),
                             Text(
                               formatDate(endDate),
                               style: const TextStyle(fontSize: 12),
@@ -350,7 +346,7 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
-                      offset:  Offset(0.0, 1),
+                      offset: Offset(0.0, 1),
                       blurRadius: 6.0,
                     ),
                   ],

@@ -13,12 +13,18 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
           actions: const [
             Row(
               children: [
-                const Text(
-                  "Item Reported By Party",
-                  style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                SizedBox(
+                  width: 220,
+                  child: const Text(
+                    "Stock Summary By Item Category",
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                        
+                        overflow: TextOverflow.ellipsis,
+                  
+                  ),
                 ),
                 SizedBox(
                   width: 50,

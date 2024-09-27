@@ -159,7 +159,7 @@ class _LowStockSummaryReportPageState extends State<LowStockSummaryReportPage> {
               ),
             ),
             const SizedBox(height: 1),
-            Image.asset('assets/images/no data Image.jpeg'),
+            Image.asset('assets/images/NO Data Image.jpeg'),
           ],
         ),
       ),

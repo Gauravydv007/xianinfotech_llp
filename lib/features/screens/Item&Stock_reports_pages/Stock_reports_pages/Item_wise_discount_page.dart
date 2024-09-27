@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:intl/intl.dart';
 
 class ItemWiseDiscountPage extends StatefulWidget {
@@ -89,11 +90,30 @@ class _ItemWiseDiscountPageState extends State<ItemWiseDiscountPage> {
         backgroundColor: const Color.fromARGB(255, 12, 135, 206),
         shadowColor: Colors.grey,
         elevation: 1,
-        title: const Text(
-          "Item Reported By Party",
-          style: TextStyle(
-              fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
-        ),
+        actions: [ 
+           Padding(
+             padding: const EdgeInsets.only(right: 5),
+             child: Row(
+                       children: [
+              SizedBox(
+                width: 220,
+                child: Text(
+                  "Item Wise Discount",
+                  style: TextStyle(
+                      fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
+                ),
+              ),
+             
+              SizedBox(width: 15,),
+             
+              Icon(FontAwesomeIcons.solidFilePdf, color: Colors.red,),
+               SizedBox(width: 8,),
+             
+              Icon(FontAwesomeIcons.solidFileExcel, color: Colors.green,)
+                       ],
+                     ),
+           ),
+        ],
       ),
       body: Stack(
         children: [
@@ -160,7 +180,7 @@ class _ItemWiseDiscountPageState extends State<ItemWiseDiscountPage> {
                         onTap: () => selectDate(context, false),
                         child: Row(
                           children: [
-                            const SizedBox(width: 5),
+
                             Text(
                               formatDate(endDate),
                               style: const TextStyle(fontSize: 12),

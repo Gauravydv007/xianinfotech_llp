@@ -10,7 +10,7 @@ class StockDetailPage extends StatefulWidget {
 
 class _StockDetailPageState extends State<StockDetailPage> {
   bool fvalue = false;
-   String selectedDateRange = "Custom";
+  String selectedDateRange = "Custom";
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now();
   bool isDropdownVisible = false;
@@ -31,7 +31,6 @@ class _StockDetailPageState extends State<StockDetailPage> {
     "Sale qua...",
     "Purchas..",
   ];
-
 
   String selectedType = "Name";
 
@@ -87,7 +86,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
         shadowColor: Colors.grey,
         elevation: 1,
         title: const Text(
-          "Stock Summary Report",
+          "Stock Detail Report",
           style: TextStyle(
             fontSize: 21,
             fontWeight: FontWeight.w500,
@@ -113,9 +112,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                   ),
                   child: Column(
                     children: [
-                       Padding(
-                         padding: const EdgeInsets.only(top: 10, left: 8),
-                         child: Row(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, left: 8),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             GestureDetector(
@@ -131,10 +130,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                     child: Text(
                                       selectedDateRange,
                                       style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey.shade700,
-                                        overflow: TextOverflow.ellipsis
-                                      ),
+                                          fontSize: 12,
+                                          color: Colors.grey.shade700,
+                                          overflow: TextOverflow.ellipsis),
                                     ),
                                   ),
                                   const SizedBox(width: 10),
@@ -175,11 +173,6 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               onTap: () => selectDate(context, false),
                               child: Row(
                                 children: [
-                                  const Icon(
-                                    Icons.calendar_month,
-                                    color: Colors.blue,
-                                  ),
-                                  const SizedBox(width: 5),
                                   Text(
                                     formatDate(endDate),
                                     style: const TextStyle(fontSize: 12),
@@ -188,11 +181,12 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               ),
                             ),
                           ],
-                                               ),
-                       ),
+                        ),
+                      ),
                       Divider(),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+                        padding:
+                            const EdgeInsets.only(left: 10, right: 10, top: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -200,7 +194,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               'Filters Applied:',
                               style: TextStyle(
                                 fontSize: 15,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                             Container(
@@ -211,7 +205,8 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                 border: Border.all(color: Colors.grey),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Icon(
                                     Icons.filter_alt_outlined,
@@ -223,7 +218,8 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: fvalue ? Colors.black : Colors.grey,
+                                      color:
+                                          fvalue ? Colors.black : Colors.grey,
                                     ),
                                   ),
                                 ],
@@ -242,7 +238,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               height: 25,
                               width: 130,
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
+                                color: Colors.grey.shade200,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
@@ -256,29 +252,12 @@ class _StockDetailPageState extends State<StockDetailPage> {
                                 ),
                               ),
                             ),
+
                             Container(
                               height: 25,
                               width: 80,
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Stock - All',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade700,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 25,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
+                                color: Colors.grey.shade200,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
@@ -299,88 +278,87 @@ class _StockDetailPageState extends State<StockDetailPage> {
                   ),
                 ),
                 const SizedBox(height: 1),
-                Image.asset('assets/images/no data Image.jpeg'),
+                Image.asset('assets/images/NO Data Image.jpeg'),
               ],
             ),
-
             if (isDropdownVisible)
-            Positioned(
-              top: 35,
-              left: 10,
-              child: Container(
-                height: 170,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: dateRangeOptions.map((String option) {
-                    return SizedBox(
-                      height: 26,
-                      child: ListTile(
-                        dense: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 10),
-                        title: Text(
-                          option,
-                          style: const TextStyle(
-                            fontSize: 12,
+              Positioned(
+                top: 35,
+                left: 10,
+                child: Container(
+                  height: 170,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: const Offset(0.0, 1),
+                        blurRadius: 6.0,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: dateRangeOptions.map((String option) {
+                      return SizedBox(
+                        height: 26,
+                        child: ListTile(
+                          dense: true,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 0, horizontal: 10),
+                          title: Text(
+                            option,
+                            style: const TextStyle(
+                              fontSize: 12,
+                            ),
                           ),
+                          onTap: () {
+                            selectDateRange(option);
+                          },
                         ),
-                        onTap: () {
-                          selectDateRange(option);
-                        },
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-          if (isTypeDropdownVisible)
-            Positioned(
-              top: 100,
-              left: 200,
-              child: Container(
-                height: 120,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: typeOptions.map((String option) {
-                    return SizedBox(
-                      height: 30,
-                      child: ListTile(
-                        dense: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 5),
-                        title: Text(
-                          option,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                        onTap: () {
-                          selectType(option);
-                        },
+            if (isTypeDropdownVisible)
+              Positioned(
+                top: 100,
+                left: 200,
+                child: Container(
+                  height: 120,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: const Offset(0.0, 1),
+                        blurRadius: 6.0,
                       ),
-                    );
-                  }).toList(),
+                    ],
+                  ),
+                  child: Column(
+                    children: typeOptions.map((String option) {
+                      return SizedBox(
+                        height: 30,
+                        child: ListTile(
+                          dense: true,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 0, horizontal: 5),
+                          title: Text(
+                            option,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          onTap: () {
+                            selectType(option);
+                          },
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

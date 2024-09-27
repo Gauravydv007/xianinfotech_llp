@@ -78,11 +78,36 @@ class _SalePurchaseByItemCategoryPageState
         backgroundColor: const Color.fromARGB(255, 12, 135, 206),
         shadowColor: Colors.grey,
         elevation: 1,
-        title: const Text(
-          "Item Reported By Party",
-          style: TextStyle(
-              fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
-        ),
+        
+        
+       actions: const[
+            Row(
+              children: [
+                SizedBox(
+                  width: 220,
+                  child: const Text(
+                    "Sale Purchase By Item Category",
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        overflow: TextOverflow.ellipsis),
+
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.more_vert,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ],
       ),
       body: Stack(
         children: [
@@ -158,11 +183,6 @@ class _SalePurchaseByItemCategoryPageState
                         onTap: () => selectDate(context, false),
                         child: Row(
                           children: [
-                            const Icon(
-                              Icons.calendar_month,
-                              color: Colors.blue,
-                            ),
-                            const SizedBox(width: 5),
                             Text(
                               formatDate(endDate),
                               style: const TextStyle(fontSize: 12),
