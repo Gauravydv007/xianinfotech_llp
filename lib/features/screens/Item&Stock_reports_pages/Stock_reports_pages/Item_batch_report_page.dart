@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
 
 class SubscriptionSheet extends StatefulWidget {
   final VoidCallback
-      onClose; // This callback will be triggered when the bottom sheet is closed.
+      onClose;
 
   SubscriptionSheet({required this.onClose});
 
@@ -131,7 +131,7 @@ class _SubscriptionSheetState extends State<SubscriptionSheet> {
         GestureDetector(
           onTap: () {
             showChangeBottomSheet(
-                context); // Show modal bottom sheet when "Change" is tapped
+                context); 
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 15, top: 10),

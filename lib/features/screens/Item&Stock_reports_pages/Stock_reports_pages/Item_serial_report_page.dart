@@ -130,7 +130,7 @@ class _SubscriptionSheetState extends State<SubscriptionSheet> {
         GestureDetector(
           onTap: () {
             showChangeBottomSheet(
-                context); // Show modal bottom sheet when "Change" is tapped
+                context); // it will show modal bottom sheet when tap
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 15, top: 10),

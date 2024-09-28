@@ -77,161 +77,71 @@ class _ItemReportByPartyPageState extends State<ItemReportByPartyPage> {
         backgroundColor: const Color.fromARGB(255, 12, 135, 206),
         shadowColor: Colors.grey,
         elevation: 1,
-        actions:const  [ 
-           Padding(
-             padding: const EdgeInsets.only(right: 5),
-             child: Row(
-                       children: [
-              SizedBox(
-                width: 220,
-                child: Text(
-                  "Item Reported By Party",
-                  style: TextStyle(
-                      fontSize: 21, 
-                      fontWeight: FontWeight.w500, color: Colors.white,
-                      overflow: TextOverflow.ellipsis),
-                ),
-              ),
-             
-              SizedBox(width: 15,),
-             
-              Icon(FontAwesomeIcons.solidFilePdf, color: Colors.red,),
-               SizedBox(width: 8,),
-             
-              Icon(FontAwesomeIcons.solidFileExcel, color: Colors.green,)
-                       ],
-                     ),
-           ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isDropdownVisible = !isDropdownVisible;
-                          });
-                        },
-                        child: Row(
-                          children: [
-                            Text(
-                              selectedDateRange,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey.shade700,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            const Icon(Icons.arrow_drop_down),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      const SizedBox(
-                        height: 20,
-                        child: VerticalDivider(color: Colors.grey),
-                      ),
-                      GestureDetector(
-                        onTap: () => selectDate(context, true),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.calendar_month,
-                              color: Colors.blue,
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              formatDate(startDate),
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 7),
-                      const Text(
-                        "to",
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                      const SizedBox(width: 7),
-                      GestureDetector(
-                        onTap: () => selectDate(context, false),
-                        child: Row(
-                          children: [
-                            Text(
-                              formatDate(endDate),
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 5),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 220,
+                  child: Text(
+                    "Item Reported By Party",
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        overflow: TextOverflow.ellipsis),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 3, left: 15, right: 10),
-                child: Row(
-                  children: [
-                    const Text(
-                      "Party Name",
-                      style: TextStyle(fontSize: 13, color: Colors.blue),
-                    ),
-                    const SizedBox(width: 120),
-                    const Text(
-                      "Sort by ",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
+                SizedBox(width: 15),
+                Icon(
+                  FontAwesomeIcons.solidFilePdf,
+                  color: Colors.red,
                 ),
+                SizedBox(width: 8),
+                Icon(
+                  FontAwesomeIcons.solidFileExcel,
+                  color: Colors.green,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: const Offset(0.0, -2),
+                    blurRadius: 6.0,
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 50,
-                      width: 180,
-                      child: TextField(),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          isTypeDropdownVisible = !isTypeDropdownVisible;
+                          isDropdownVisible = !isDropdownVisible;
                         });
                       },
                       child: Row(
                         children: [
                           Text(
-                            selectedType,
+                            selectedDateRange,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 12,
+                              color: Colors.grey.shade700,
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -239,162 +149,181 @@ class _ItemReportByPartyPageState extends State<ItemReportByPartyPage> {
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                child: Row(
-                  children: [
-                    Text(
-                      "Item name",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          decoration: TextDecoration.underline),
+                    const SizedBox(width: 5),
+                    const SizedBox(
+                      height: 20,
+                      child: VerticalDivider(color: Colors.grey),
                     ),
-                    SizedBox(
-                      width: 75,
-                    ),
-                    Text(
-                      'Sales qty',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          decoration: TextDecoration.underline),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "Purchase qty",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          decoration: TextDecoration.underline),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 450,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Divider(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                child: Row(
-                  children: [
-                    Text(
-                      "Total",
-                      style: TextStyle(
-                        fontSize: 16,
+                    GestureDetector(
+                      onTap: () => selectDate(context, true),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.calendar_month,
+                            color: Colors.blue,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            formatDate(startDate),
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      width: 135,
-                    ),
-                    Text(
-                      '0.0',
+                    const SizedBox(width: 7),
+                    const Text(
+                      "to",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                       ),
                     ),
-                    SizedBox(
-                      width: 105,
-                    ),
-                    Text(
-                      "0.0",
-                      style: TextStyle(
-                        fontSize: 16,
+                    const SizedBox(width: 7),
+                    GestureDetector(
+                      onTap: () => selectDate(context, false),
+                      child: Row(
+                        children: [
+                          Text(
+                            formatDate(endDate),
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-          if (isDropdownVisible)
-            Positioned(
-              top: 35,
-              left: 10,
-              child: Container(
-                height: 170,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 8, right: 8),
+              child: Divider(thickness: 1, height: 1),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 3, left: 15, right: 10),
+              child: Row(
+                children: const [
+                  Text(
+                    "Party Name",
+                    style: TextStyle(fontSize: 13, color: Colors.blue),
+                  ),
+                  SizedBox(width: 120),
+                  Text(
+                    "Sort by ",
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.blue,
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: dateRangeOptions.map((String option) {
-                    return SizedBox(
-                      height: 26,
-                      child: ListTile(
-                        dense: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 10),
-                        title: Text(
-                          option,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 180,
+                    child: TextField(),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isTypeDropdownVisible = !isTypeDropdownVisible;
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          selectedType,
                           style: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 18,
                           ),
                         ),
-                        onTap: () {
-                          selectDateRange(option);
-                        },
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          if (isTypeDropdownVisible)
-            Positioned(
-              top: 100,
-              left: 200,
-              child: Container(
-                height: 120,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
-                      blurRadius: 6.0,
+                        const SizedBox(width: 10),
+                        const Icon(Icons.arrow_drop_down),
+                      ],
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: typeOptions.map((String option) {
-                    return SizedBox(
-                      height: 30,
-                      child: ListTile(
-                        dense: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 5),
-                        title: Text(
-                          option,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                        onTap: () {
-                          selectType(option);
-                        },
-                      ),
-                    );
-                  }).toList(),
-                ),
+                  ),
+                ],
               ),
             ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+              child: Row(
+                children: const [
+                  Text(
+                    "Item name",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                        decoration: TextDecoration.underline),
+                  ),
+                  SizedBox(
+                    width: 75,
+                  ),
+                  Text(
+                    'Sales qty',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                        decoration: TextDecoration.underline),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    "Purchase qty",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                        decoration: TextDecoration.underline),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 450,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+              child: Row(
+                children: const [
+                  Text(
+                    "Total",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 135,
+                  ),
+                  Text(
+                    '0.0',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 105,
+                  ),
+                  Text(
+                    "0.0",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

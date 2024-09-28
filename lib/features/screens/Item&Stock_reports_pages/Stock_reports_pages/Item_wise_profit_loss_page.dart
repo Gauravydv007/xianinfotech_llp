@@ -110,8 +110,8 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                   color: Colors.grey.shade200,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
-                      offset: const Offset(0.0, 1),
+                      color: Colors.grey.shade100,
+                      offset: const Offset(0.0, -2),
                       blurRadius: 6.0,
                     ),
                   ],
@@ -187,6 +187,10 @@ class _ItemWiseProfitLossPageState extends State<ItemWiseProfitLossPage> {
                     ],
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: Divider(thickness: 1, height: 1,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 3, left: 0, right: 10),

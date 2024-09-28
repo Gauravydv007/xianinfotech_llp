@@ -114,7 +114,7 @@ class _ItemDetailsReportPageState extends State<ItemDetailsReportPage> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
-                      offset: const Offset(0.0, 1),
+                      offset: const Offset(0.0, 0.2),
                       blurRadius: 6.0,
                     ),
                   ],

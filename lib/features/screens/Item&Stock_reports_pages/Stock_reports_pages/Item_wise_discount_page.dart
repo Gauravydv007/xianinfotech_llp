@@ -117,232 +117,235 @@ class _ItemWiseDiscountPageState extends State<ItemWiseDiscountPage> {
       ),
       body: Stack(
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+          
+          
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isDropdownVisible = !isDropdownVisible;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                selectedDateRange,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade700,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.arrow_drop_down),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        const SizedBox(
+                          height: 25,
+                          child: VerticalDivider(color: Colors.grey),
+                        ),
+                        GestureDetector(
+                          onTap: () => selectDate(context, true),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.calendar_month,
+                                color: Colors.blue,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                formatDate(startDate),
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 7),
+                        const Text(
+                          "to",
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                        const SizedBox(width: 7),
+                        GestureDetector(
+                          onTap: () => selectDate(context, false),
+                          child: Row(
+                            children: [
+            
+                              Text(
+                                formatDate(endDate),
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: const Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      Text(
+                        "Item Name",
+                        style: TextStyle(fontSize: 13, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        "All Items",
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(height: 20, child: VerticalDivider()),
+                      Text(
+                        "Item Category",
+                        style: TextStyle(fontSize: 13, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            isDropdownVisible = !isDropdownVisible;
+                            isTypeDropdownVisible = !isTypeDropdownVisible;
                           });
                         },
                         child: Row(
                           children: [
                             Text(
-                              selectedDateRange,
+                              selectedType,
                               style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey.shade700,
+                                fontSize: 13,
                               ),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 25),
                             const Icon(Icons.arrow_drop_down),
                           ],
                         ),
                       ),
-                      const SizedBox(width: 5),
-                      const SizedBox(
-                        height: 25,
-                        child: VerticalDivider(color: Colors.grey),
-                      ),
-                      GestureDetector(
-                        onTap: () => selectDate(context, true),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.calendar_month,
-                              color: Colors.blue,
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              formatDate(startDate),
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 7),
-                      const Text(
-                        "to",
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                      const SizedBox(width: 7),
-                      GestureDetector(
-                        onTap: () => selectDate(context, false),
-                        child: Row(
-                          children: [
-
-                            Text(
-                              formatDate(endDate),
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
+                      SizedBox(
+                        width: 5,
                       ),
                     ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
-                child: const Divider(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
-                child: Row(
-                  children: [
-                    Text(
-                      "Item Name",
-                      style: TextStyle(fontSize: 13, color: Colors.blue),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "All Items",
-                      style: TextStyle(
-                        fontSize: 13,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(height: 20, child: VerticalDivider()),
-                    Text(
-                      "Item Category",
-                      style: TextStyle(fontSize: 13, color: Colors.blue),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isTypeDropdownVisible = !isTypeDropdownVisible;
-                        });
-                      },
-                      child: Row(
-                        children: [
-                          Text(
-                            selectedType,
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          const SizedBox(width: 25),
-                          const Icon(Icons.arrow_drop_down),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Divider(),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Divider(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
-                child: Row(
-                  children: [
-                    Text(
-                      "Party Name",
-                      style: TextStyle(fontSize: 13, color: Colors.blue),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 200,
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isPartyDropdownVisible = !isPartyDropdownVisible;
-                          });
-                        },
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Party Name",
+                        style: TextStyle(fontSize: 13, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      SizedBox(
+                        width: 200,
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             suffixIcon: const Icon(Icons.arrow_drop_down),
                             hintText: selectedParty,
                           ),
-                          readOnly: true,
+                          
+                          onTap: () {
+                            setState(() {
+                              isPartyDropdownVisible = !isPartyDropdownVisible;
+                              
+                            });
+                          },
                         ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 360,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Summary",
-                  style: TextStyle(
-                    fontSize: 20,
+                      )
+                    ],
                   ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Divider(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Total",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      "\u{20B9}${0.0}",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  height: 360,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Total",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Summary",
+                    style: TextStyle(
+                      fontSize: 20,
                     ),
-                    Text(
-                      "\u{20B9}${0.0}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Total",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "\u{20B9}${0.0}",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Total",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "\u{20B9}${0.0}",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
           if (isDropdownVisible)
             Positioned(
@@ -424,11 +427,11 @@ class _ItemWiseDiscountPageState extends State<ItemWiseDiscountPage> {
             ),
           if (isPartyDropdownVisible)
             Positioned(
-              top: 220, // Adjust the position accordingly
-              left: 10, // Adjust the position accordingly
+              top: 150, 
+              left: 70, 
               child: Container(
                 height: 90,
-                width: 200, // Adjust width as needed
+                width: 200, 
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [

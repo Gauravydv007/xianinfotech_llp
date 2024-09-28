@@ -14,8 +14,8 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 220,
-                  child: const Text(
+                  width: 230,
+                  child:  Text(
                     "Stock Summary By Item Category",
                     style: TextStyle(
                         fontSize: 21,
@@ -27,7 +27,7 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 50,
+                  width: 30,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
@@ -39,7 +39,7 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
               ],
             ),
           ]),
-      body: const Padding(
+      body:  Padding(
         padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
         child: Row(
           children: [
@@ -47,9 +47,9 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
               "Item Category",
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.grey.shade600,
                   decoration: TextDecoration.underline,
-                  decorationColor: Colors.grey),
+                  decorationColor: Colors.grey.shade600),
             ),
             SizedBox(
               width: 50,
@@ -58,9 +58,9 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
               "Stock qty",
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.grey.shade600,
                   decoration: TextDecoration.underline,
-                  decorationColor: Colors.grey),
+                  decorationColor: Colors.grey.shade600),
             ),
             SizedBox(
               width: 30,
@@ -69,9 +69,9 @@ class StockSummaryByItemCategoryPage extends StatelessWidget {
               "Stock Value",
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.grey.shade600,
                   decoration: TextDecoration.underline,
-                  decorationColor: Colors.grey),
+                  decorationColor: Colors.grey.shade600),
             ),
           ],
         ),
